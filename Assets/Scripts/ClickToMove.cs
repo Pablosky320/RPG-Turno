@@ -1,5 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Windows;
+using UnityEngine.Animations;
+
 
 public class ClickToMove : MonoBehaviour
 {
@@ -8,33 +12,49 @@ public class ClickToMove : MonoBehaviour
     Vector3 destination;
     Rigidbody rb;
     [SerializeField] Transform destinoDummie;
+    NavMeshAgent agent;
+    Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+        agent.destination = destinoDummie.position;
+        animator = GetComponent<Animator>();
+
         rb = GetComponent<Rigidbody>();
-        destination = destinoDummie.position;
+        agent.destination = destinoDummie.position;
     }
 
     // Update is called once per frame
+
     void Update()
     {
+        
+
+
         destination = destinoDummie.position;
         if (Input.GetMouseButtonDown(1))
         {
             HandleClick();
         }
+
+        animator.SetFloat(InputX, agent.velocity.x);
+        animator.SetFloat(InputY, agent.velocity.z);
     }
 
     private void HandleClick()
     {
-        StartCoroutine(MoveToPosition());
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f))
+        {
+            agent.destination = hit.point;
+            destinoDummie.position = hit.point;
+
+        }    
     }
 
-    IEnumerator MoveToPosition(Vector3 destination)
-    {
-        Vector3 moveDirection = destination - transform.position;
-        rb.AddForce(Vector3.forward * moveSpeed, ForceMode.VelocityChange);
-        yield return null;
-    }
+    //StartCoroutine(MoveToPosition());
+
+
 }

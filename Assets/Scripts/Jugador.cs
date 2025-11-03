@@ -10,7 +10,6 @@ public class Jugador : MonoBehaviour
 
     public int GetExperiencia() { return experiencia; }
 
-    public void 
     void ganarExperiencia(int xp) { }
     void SubirNivel() { }
 }
