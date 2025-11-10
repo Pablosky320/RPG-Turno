@@ -39,8 +39,8 @@ public class ClickToMove : MonoBehaviour
             HandleClick();
         }
 
-        animator.SetFloat(InputX, agent.velocity.x);
-        animator.SetFloat(InputY, agent.velocity.z);
+        animator.SetFloat("fowardMovement", agent.velocity.x);
+        animator.SetFloat("InputY", agent.velocity.z);
     }
 
     private void HandleClick()
@@ -54,7 +54,13 @@ public class ClickToMove : MonoBehaviour
         }    
     }
 
-    //StartCoroutine(MoveToPosition());
+    private void OnAnimatorMove()
+    {
+        Vector3 position = animator.rootPosition;
+        position.y = agent.nextPosition.y;
+        transform.position = position;
+        agent.nextPosition = transform.position;
+    }
 
 
 }
