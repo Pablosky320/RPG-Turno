@@ -37,10 +37,12 @@ public class ClickToMove : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             HandleClick();
+            Unit unit = GetComponent<Unit>();
+            unit.FinishMovement();
         }
 
-        animator.SetFloat("fowardMovement", agent.velocity.x);
-        animator.SetFloat("InputY", agent.velocity.z);
+        animator.SetFloat("fowardMovement", agent.velocity.magnitude);
+
     }
 
     private void HandleClick()
