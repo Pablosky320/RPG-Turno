@@ -5,10 +5,13 @@ using UnityEngine;
 public class TurnManager : MonoBehaviour
 {
     public TurnManager Instance;
+    public Unit Unit;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Unit = gameobject
     }
 
     private void ResetUnits(List<unit> units)

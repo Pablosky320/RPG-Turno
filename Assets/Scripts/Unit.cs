@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    public List Units;
+
+    public bool hasActed;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
