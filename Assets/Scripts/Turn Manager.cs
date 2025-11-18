@@ -63,6 +63,5 @@ public class TurnManager : MonoBehaviour
     {
         isPlayerTurn = false;
         ResetUnits(enemyUnits);
-
     }
 }
