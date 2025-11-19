@@ -2,31 +2,20 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    [Header("Charactermain ")]
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void shoot()
     {
-        name = gameObject.name;
+        IsOnLos();
     }
-
-    // Update is called once per frame
-    void Update()
+    public bool IsOnLos(Transform enemyTransform)
     {
+        bool isLos;
+        RaycastHit hit;
 
-    }
-    void TakeDamage(float damage)
-    {
-        float finalDamage = damage - armorValue;
-        currentLife -= finalDamage;
-        IsAlive();
-    }
-
-    void IsAlive();
-    {
-        if (currentLife <= 0)
+        if (Physics.Raycast(transform.position, enemyTransform.position, out hit, 100f))
         {
-            Debug.Log(name + "Ha muerto")
+            Character character = hit.collider.GetComponent<Character>();
+            
         }
+        return false;
     }
 }
