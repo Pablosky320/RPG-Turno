@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,4 +14,23 @@ public class Unit : MonoBehaviour
     {
         
     }
+
+    public void Attack()
+    {
+        if (hasActed = false)
+        {
+            return;
+        }
+        if (isFriendly)
+        {
+
+        }
+    }
+
+    public void PassTurn()
+    {
+
+    }
+
+    void 
 }

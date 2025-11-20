@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public void shoot()
+    public void shoot(Vector3 enemyPosition, float weaponRange)
     {
-        IsOnLos();
+        IsOnLos(Vector3.zero, 10f);
     }
     public bool IsOnLos(Transform enemyTransform)
     {
@@ -15,6 +15,10 @@ public class Shooting : MonoBehaviour
         {
             Character character = hit.collider.GetComponent<Character>();
             
+            if (character != null)
+            {
+                return true;
+            }
         }
         return false;
     }
