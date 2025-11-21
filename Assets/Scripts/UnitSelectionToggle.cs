@@ -29,4 +29,9 @@ public class UnitSelectionToggle : MonoBehaviour
         
 
     }
+
+    void deactivateAllUI()
+    {
+
+    }
 }
