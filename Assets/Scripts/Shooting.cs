@@ -9,6 +9,7 @@ public class Shooting : MonoBehaviour
     public bool IsOnLos(Transform enemyTransform)
     {
         bool isLos;
+
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, enemyTransform.position, out hit, 100f))

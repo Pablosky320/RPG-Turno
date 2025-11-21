@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class EnemyCharacter : Character
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,9 +12,6 @@ public class Character : MonoBehaviour
     void Update()
     {
         
-    }
-    protected void TakeDamage(float damage)
-    {
-        float finalDamage = damage - armorValue;
-    }
+    }   
+    protected void TakeDamage()
 }
