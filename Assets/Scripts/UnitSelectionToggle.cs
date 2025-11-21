@@ -6,7 +6,7 @@ public class UnitSelectionToggle : MonoBehaviour
 
         
     // Update is called once per frame
-       void  Update()
+    void  Update()
     {
         Unit unitSelected = UnitSelection.Instance.selectedUnit.name;
         
@@ -27,11 +27,6 @@ public class UnitSelectionToggle : MonoBehaviour
     private void SelectedUnit()
     {
         
-
-    }
-
-    void deactivateAllUI()
-    {
 
     }
 }
