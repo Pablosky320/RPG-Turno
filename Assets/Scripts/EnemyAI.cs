@@ -37,11 +37,18 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator AttackTarget(Unit target)
     {
-        throw new
+        Vector3 lookDir = target.transform.position - transform.position;
+
+        Shooting.Shoot(target.transform.position, attackRange);
+
+        yield return new WaitForSeconds(0.2f);
+
+        unit.FinishAttack();
     }
+
     bool hasLineOfSight(Unit target)
     {
-
+        return shooting.IsOnLos(target.transform.postion, weaponRange);
     }
 
     IEnumerator DoenemyTurn()
@@ -51,7 +58,7 @@ public class EnemyAI : MonoBehaviour
 
         if (target == null)
         {
-            Debug.Log()
+            unit.FinishAction();
         }
 
         if (closestPlayerUnit == null)
@@ -66,12 +73,21 @@ public class EnemyAI : MonoBehaviour
 
         }
         float distancetotarget;
+        if (distancetotarget = Vector3.Distance(transform.position, target.transform.position))
+        {
+            yield return AttackTarget(target);
+        }
     }
 
     private Unit FindClosestPlayerUnit()
     {
         Unit closest = null;
-        float closest
+        float closestDist = Mathf.Infinity;
+
+        foreach (Unit playerUnit in TurnManager.Instance.playerUnits) ;
+        {
+            float dist = Vector3.Distance(transform.position, playerUnit.transform.position);
+        }
     }
 
 }
