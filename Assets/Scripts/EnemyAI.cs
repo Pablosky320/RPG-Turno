@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor.ShaderGraph.Internal;
+using UnityEngine.AI;
 
 
 public class EnemyAI : MonoBehaviour
@@ -17,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     {
         unit = GetComponent<Unit>();
         shooting = GetComponent<Shooting>();
+        agent = GetComponent<NavMeshAgent>();
     }
     // Update is called once per frame
     void Update()
@@ -33,6 +35,13 @@ public class EnemyAI : MonoBehaviour
         {
             StartCoroutine(DoenemyTurn());
         }
+    }
+
+    private IEnumerator MoveTowardTarget(Vector3 targetPosition)
+    {
+        agent.destination = targetPosition;
+        yield return new WaitForSeconds(5);
+        unit.FinishMovement();
     }
 
     IEnumerator AttackTarget(Unit target)
@@ -59,23 +68,20 @@ public class EnemyAI : MonoBehaviour
         if (target == null)
         {
             unit.FinishAction();
-        }
-
-        if (closestPlayerUnit == null)
-        {
-            Debug.Log(Unit.characterName + "No encuentra objetivos validos, salta el turno");
-            
-            Unit.FinishAction();
-
             yield break;
-
-
-
         }
+
         float distancetotarget;
+
         if (distancetotarget = Vector3.Distance(transform.position, target.transform.position))
         {
             yield return AttackTarget(target);
+        }
+        else
+        {
+            yield return MoveTowardsTarget(target.transform.position);
+
+            distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
         }
     }
 
@@ -84,7 +90,7 @@ public class EnemyAI : MonoBehaviour
         Unit closest = null;
         float closestDist = Mathf.Infinity;
 
-        foreach (Unit playerUnit in TurnManager.Instance.playerUnits) ;
+        foreach (Unit playerUnit in TurnManager.Instance.playerUnits)
         {
             float dist = Vector3.Distance(transform.position, playerUnit.transform.position);
         }
