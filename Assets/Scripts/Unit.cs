@@ -18,11 +18,11 @@ public class Unit : MonoBehaviour
     }
     public void Run()
     {
-        if (hasMoved  hasAtacked) //Aquí si uno de los dos ha ocurrido la funcion acaba.
+        if (hasMoved && hasAtacked) //Aquí si uno de los dos ha ocurrido la funcion acaba.
         {
             return;
         }
-        if (isFriendly) // Si es una unidad aliada, dejala moverse y cambiale la posición en el momento correcto.
+        if (isFriendly = true) // Si es una unidad aliada, dejala moverse y cambiale la posición en el momento correcto.
         {
             clickTomove.enabled = true;
             clickTomove.destinoDumie.position = transform.position;
@@ -35,7 +35,7 @@ public class Unit : MonoBehaviour
     }
     public void Atack()
     {
-        if (hasActed  hasAtacked)
+        if ((hasActed = true) && (hasAtacked = true))
         {
             return;
         }
