@@ -11,7 +11,7 @@ public class ClickToMove : MonoBehaviour
     [SerializeField] private float moveSpeed;
     Vector3 destination;
     Rigidbody rb;
-    [SerializeField] Transform destinoDummie;
+    public Transform destinoDummie;
     NavMeshAgent agent;
     Animator animator;
 
