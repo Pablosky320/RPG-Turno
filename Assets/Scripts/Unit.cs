@@ -2,35 +2,36 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    [Header("Propiedade di la Unitad")]
+    [Header("Unit Stats")]
     [SerializeField] string characterName;
 
     public bool hasActed = true;
     bool hasAtacked = false;
     bool hasMoved = false;
     public bool isFriendly;
-    ClickToMove clickTomove;
+    ClickToMove clickToMove;
 
-    public void Awake()//Esto es pa que no me deje clickar fuera de turno o al darle al play.
+    //Evita moverse fuera de turno
+    public void Awake()
     {
-        clickTomove = GetComponent<ClickToMove>();
-        clickTomove.enabled = false;
+        clickToMove = GetComponent<ClickToMove>();
+        clickToMove.enabled = false;
     }
     public void Run()
     {
-        if (hasMoved && hasAtacked) //Aquí si uno de los dos ha ocurrido la funcion acaba.
+        if (hasMoved || hasAtacked) //Acaba la funcion si ha actuado o atacado
         {
             return;
         }
-        if (isFriendly = true) // Si es una unidad aliada, dejala moverse y cambiale la posición en el momento correcto.
+        if (isFriendly == true)
         {
-            clickTomove.enabled = true;
-            clickTomove.destinoDumie.position = transform.position;
-            Debug.Log(characterName + "esta scouting.");
+            clickToMove.enabled = true;
+            clickToMove.destinoDummie.position = transform.position;
+            Debug.Log(characterName + "se ha movido.");
         }
         else
         {
-            Debug.Log(characterName + "esta bailando salsa"); //Um firi fassendo barras
+            Debug.Log(characterName + "no se ha movido");
         }
     }
     public void Atack()

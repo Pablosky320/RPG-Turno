@@ -7,7 +7,10 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-
+    Unit unit;
+    Shooting shooting;
+    NavMeshAgent agent;
+    GameObject target;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
