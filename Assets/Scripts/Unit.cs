@@ -4,7 +4,7 @@ public class Unit : MonoBehaviour
 {
     [Header("Unit Stats")]
     [SerializeField] string characterName;
-
+    public list
     public bool hasActed = true;
     bool hasAtacked = false;
     bool hasMoved = false;
