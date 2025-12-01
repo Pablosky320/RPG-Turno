@@ -1,8 +1,9 @@
-using System.Collections;
+
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Windows;
-using UnityEngine.Animations;
+
+
+
 
 
 public class ClickToMove : MonoBehaviour

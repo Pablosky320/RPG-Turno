@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Playercharacter : MonoBehaviour
 {
@@ -7,12 +8,14 @@ public class Playercharacter : MonoBehaviour
     float experiece;
     Weapon equippedWeapon;
     Equipment equipment;
-    [SerializeField] List<Equipment> equipmentList = new List<Equipment>;
-    [SerializeField] List<Weapon> weaponList = new List<Weapon>;
+    [SerializeField] List<Equipment> equipmentList = new List<Equipment>();
+    [SerializeField] List<Weapon> weaponList = new List<Weapon>();
+    int currentLife;
+    int armorValue;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        equippedWeapon = 
     }
 
     // Update is called once per frame
@@ -22,10 +25,13 @@ public class Playercharacter : MonoBehaviour
     }
 
     void Earnexperience(float exp)
+    {
+
+    }
 
 
-        /*
-     [Header("Charactermain ")]
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,6 +44,7 @@ public class Playercharacter : MonoBehaviour
     {
 
     }
+
     void TakeDamage(float damage)
     {
         float finalDamage = damage - armorValue;
@@ -45,16 +52,11 @@ public class Playercharacter : MonoBehaviour
         IsAlive();
     }
 
-    void IsAlive();
+    void IsAlive()
     {
         if (currentLife <= 0)
         {
-            Debug.Log(name + "Ha muerto")
+            Debug.Log(name + "Ha muerto");
         }
     }
-         */
-
-
-
-
 }

@@ -1,10 +1,11 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Unit : MonoBehaviour
 {
     [Header("Unit Stats")]
-    [SerializeField] string characterName;
-    public list
+    public string characterName;
+    public List<Unit> units= new List<Unit>();
     public bool hasActed = true;
     bool hasAtacked = false;
     bool hasMoved = false;

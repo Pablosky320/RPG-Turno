@@ -1,24 +1,25 @@
 using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class TurnManager : MonoBehaviour
 {
     public TurnManager Instance;
-    public Unit Unit;
+    public Unit unit;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Unit = gameobject
+        unit = gameObject.GetComponent<Unit>();
     }
 
-    private void ResetUnits(List<unit> units)
+    private void ResetUnits(List<Unit> units)
     {
-        foreach (Unit unit in units)
+        foreach (Unit units in units)
         {
-            Unit.hasActed = false;
+            unit.hasActed = false;
         }
     }
 
