@@ -55,7 +55,7 @@ public class Unit : MonoBehaviour
     }
     public void FinishMovement()
     {
-        clickTomove.enabled = false;
+        clickToMove.enabled = false;
         hasMoved = true;
     }
     public void FinishAtack()
