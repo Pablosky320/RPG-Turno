@@ -7,7 +7,9 @@ public class TurnManager : MonoBehaviour
 {
     public TurnManager Instance;
     public Unit unit;
-
+    public List<Unit> playerUnits;
+    public List<Unit> enemyUnits;
+    bool isPlayerTurn;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +19,7 @@ public class TurnManager : MonoBehaviour
 
     private void ResetUnits(List<Unit> units)
     {
-        foreach (Unit units in units)
+        foreach (Unit u in units)
         {
             unit.hasActed = false;
         }
@@ -32,7 +34,13 @@ public class TurnManager : MonoBehaviour
                 Debug.Log(u.characterName + u.hasActed);
                 return false;
             }
-        }
+            else
+            {
+
+            }
+        }               
+        
+        return true;
     }
 
     public void CheckEndTurn()
@@ -52,6 +60,13 @@ public class TurnManager : MonoBehaviour
             }
         }
     }
+
+
+    public void TurnEnded()
+    {
+
+    }
+
 
     // Update is called once per frame
     void Update()

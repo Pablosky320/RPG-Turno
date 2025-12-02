@@ -10,19 +10,10 @@ public class Playercharacter : MonoBehaviour
     Equipment equipment;
     [SerializeField] List<Equipment> equipmentList = new List<Equipment>();
     [SerializeField] List<Weapon> weaponList = new List<Weapon>();
-    int currentLife;
-    int armorValue;
+    float currentLife;
+    float armorValue;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void Earnexperience(float exp)
     {

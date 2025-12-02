@@ -11,12 +11,13 @@ public class Unit : MonoBehaviour
     bool hasMoved = false;
     public bool isFriendly;
     ClickToMove clickToMove;
-
+    TurnManager turnManager;
     //Evita moverse fuera de turno
     public void Awake()
     {
         clickToMove = GetComponent<ClickToMove>();
         clickToMove.enabled = false;
+        turnManager = GetComponent<TurnManager>();
     }
     public void Run()
     {
@@ -65,6 +66,6 @@ public class Unit : MonoBehaviour
     public void FinishAction()
     {
         hasActed = true;
-        TurnManager.Instance.TurnEnded();
+        turnManager.Instance.TurnEnded();
     }
 }
