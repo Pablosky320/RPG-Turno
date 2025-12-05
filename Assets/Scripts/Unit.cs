@@ -7,11 +7,14 @@ public class Unit : MonoBehaviour
     public string characterName;
     public List<Unit> units= new List<Unit>();
     public bool hasActed = true;
+
     bool hasAtacked = false;
     bool hasMoved = false;
     public bool isFriendly;
+
     ClickToMove clickToMove;
-    TurnManager turnManager;
+    TurnManager turnManager;    
+    public float AP;
     //Evita moverse fuera de turno
     public void Awake()
     {

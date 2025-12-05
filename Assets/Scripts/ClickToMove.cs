@@ -2,10 +2,6 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-
-
-
-
 public class ClickToMove : MonoBehaviour
 {
 
@@ -41,7 +37,6 @@ public class ClickToMove : MonoBehaviour
             Unit unit = GetComponent<Unit>();
             unit.FinishMovement();
         }
-
         animator.SetFloat("fowardMovement", agent.velocity.magnitude);
 
     }
