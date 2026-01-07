@@ -1,16 +1,27 @@
 using UnityEngine;
 using System.Collections;
 
-public static class EnemyAI
+public class EnemyAI : Unit
 { 
-    public static IEnumerator TakeAction(Unit unit)
+    public override void StartTurn()
     {
-        // Example: wait a second (pretend the AI is thinking)
-        yield return new WaitForSeconds(1f);
+        base.StartTurn();
+        StartCoroutine(EnemyRoutine());
+    }
 
-        // Example "Attack nearest player unit"
-        Debug.Log($"{unit.name} performs an enemy action!");
+    IEnumerator EnemyRoutine()
+    {
+        while (currentAP > 0)
+        {
+            yield return new WaitForSeconds(0.5f);
+            currentAP -= 3;
+            Debug.Log($"{unitName} attacks player");
 
-        // ...perform movement, shooting, animations, etc...
+            if (currentAP <= 0)
+            {
+                EndTurn();
+                yield break;
+            }
+        }
     }
 }
