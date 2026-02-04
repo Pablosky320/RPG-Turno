@@ -59,8 +59,11 @@ public class TurnManager : MonoBehaviour
 
     public void UnregisterUnit(Unit unit)
     {
-        if (allUnits.Contains(unit))
-            allUnits.Remove(unit);
+        allUnits.Remove(unit);
+        turnOrder.Remove(unit);
+
+        if (CurrentUnit == unit)
+            EndCurrentTurn();
     }
 
     #endregion
@@ -131,6 +134,8 @@ public class TurnManager : MonoBehaviour
         currentIndex++;
         StartTurn();
     }
+
+
 
     public void SelectUnit(Unit unit)
     {

@@ -2,15 +2,53 @@ using UnityEngine;
 using System.Collections;
 public class EnemyUnit : Unit
 {
-    public override void StartTurn()
+    public float attackRange = 2f;
+    public int attackAPCost = 4;
+
+    IEnumerator EnemyTurn()
     {
-        base.StartTurn();
-        StartCoroutine(EnemyRoutine());
+        yield return new WaitForSeconds(0.5f);
+
+        Unit target = FindClosestPlayer();
+        if (target == null)
+        {
+            EndTurn();
+            yield break;
+        }
+
+        float dist = Vector3.Distance(transform.position, target.transform.position);
+
+        if (dist <= attackRange)
+        {
+            TryAttack(target);
+        }
+        else
+        {
+            MoveTo(target.transform.position);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+        EndTurn();
     }
 
-    IEnumerator EnemyRoutine()
+    Unit FindClosestPlayer()
     {
-        yield return new WaitForSeconds(1f);
-        EndTurn();
+        float minDist = float.MaxValue;
+        Unit closest = null;
+
+        foreach (Unit u in FindObjectsOfType<Unit>())
+        {
+            if (u.faction != Faction.Player || !u.IsAlive)
+                continue;
+
+            float d = Vector3.Distance(transform.position, u.transform.position);
+            if (d < minDist)
+            {
+                minDist = d;
+                closest = u;
+            }
+        }
+
+        return closest;
     }
 }
