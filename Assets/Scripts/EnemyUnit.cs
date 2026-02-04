@@ -5,20 +5,22 @@ public class EnemyUnit : Unit
     public float attackRange = 2f;
     public int attackAPCost = 4;
 
-    IEnumerator EnemyTurn()
+IEnumerator EnemyTurn()
+{
+    yield return new WaitForSeconds(0.3f);
+
+    Unit target = FindClosestPlayer();
+    if (target == null)
     {
-        yield return new WaitForSeconds(0.5f);
+        EndTurn();
+        yield break;
+    }
 
-        Unit target = FindClosestPlayer();
-        if (target == null)
-        {
-            EndTurn();
-            yield break;
-        }
+    float distance = Vector3.Distance(transform.position, target.transform.position);
 
-        float dist = Vector3.Distance(transform.position, target.transform.position);
-
-        if (dist <= attackRange)
+    if (combatRole == CombatRole.Melee)
+    {
+        if (distance <= maxAttackRange)
         {
             TryAttack(target);
         }
@@ -26,10 +28,28 @@ public class EnemyUnit : Unit
         {
             MoveTo(target.transform.position);
         }
-
-        yield return new WaitForSeconds(0.5f);
-        EndTurn();
     }
+    else // Ranged
+    {
+        if (distance < minAttackRange)
+        {
+            // Too close, back up
+            Vector3 retreatDir = (transform.position - target.transform.position).normalized;
+            MoveTo(transform.position + retreatDir * 3f);
+        }
+        else if (distance <= maxAttackRange)
+        {
+            TryAttack(target);
+        }
+        else
+        {
+            MoveTo(target.transform.position);
+        }
+    }
+
+    yield return new WaitForSeconds(0.5f);
+    EndTurn();
+}
 
     Unit FindClosestPlayer()
     {

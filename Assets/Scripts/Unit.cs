@@ -19,8 +19,22 @@ public abstract class Unit : MonoBehaviour
 
     public bool IsAlive => currentHP > 0;
 
-    public float attackRange = 10f;
+    [Header("Weapon")]
+    public CombatRole combatRole = CombatRole.Ranged;
+
+    public float minAttackRange = 0f;
+    public float maxAttackRange = 10f;
+
+    [Range(0f, 1f)]
+    public float baseHitChance = 0.75f;
+
+    [Tooltip("How much accuracy is lost at max range")]
+    [Range(0f, 1f)]
+    public float maxRangePenalty = 0.4f;
+
     public LayerMask lineOfSightMask;
+
+
 
     protected virtual void Awake()
     {
@@ -72,31 +86,40 @@ public abstract class Unit : MonoBehaviour
 
     public bool TryAttack(Unit target)
     {
-        if (!target.IsAlive)
+        if (target == null || !target.IsAlive)
             return false;
 
         float distance = Vector3.Distance(transform.position, target.transform.position);
 
-        if (distance > attackRange)
+        // Hard range limits
+        if (distance < minAttackRange || distance > maxAttackRange)
         {
-            Debug.Log("Target out of range");
+            Debug.Log("Target out of weapon range");
             return false;
         }
 
+        // Line of sight
         if (!HasLineOfSight(target))
         {
             Debug.Log("No line of sight");
             return false;
         }
 
-        float baseChance = 0.75f; // 75%
-        float coverPenalty = GetCoverModifier(target);
-        float distancePenalty = distance / attackRange * 0.3f;
+        // Distance-based accuracy falloff
+        float rangeFactor = distance / maxAttackRange;
+        float distancePenalty = Mathf.Lerp(0f, maxRangePenalty, rangeFactor);
 
-        float hitChance = baseChance - coverPenalty - distancePenalty;
+        // Cover penalty
+        float coverPenalty = GetCoverModifier(target);
+
+        float hitChance = baseHitChance - distancePenalty - coverPenalty;
         hitChance = Mathf.Clamp01(hitChance);
 
-        Debug.Log($"Hit chance: {hitChance * 100f}%");
+        Debug.Log
+        (
+            $"{unitName} attack chance: {(hitChance * 100f):0}% " +
+            $"(Dist:{distance:0.0}, Cover:{coverPenalty})"
+        );
 
         if (Random.value <= hitChance)
         {

@@ -4591,6 +4591,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 528104615077059668, guid: e3b746fef223ad24f83c99406d6087ca, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a1ad6d855b749a44281a990ed0d02070, type: 2}
     - target: {fileID: 4315612692852672520, guid: e3b746fef223ad24f83c99406d6087ca, type: 3}
       propertyPath: unitName
       value: Spitter 3
@@ -6615,6 +6619,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3830910435373648240, guid: 72c9dad2fd884694abb99b8dc561f15d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a1ad6d855b749a44281a990ed0d02070, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9862,6 +9870,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 528104615077059668, guid: e3b746fef223ad24f83c99406d6087ca, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a1ad6d855b749a44281a990ed0d02070, type: 2}
     - target: {fileID: 4315612692852672520, guid: e3b746fef223ad24f83c99406d6087ca, type: 3}
       propertyPath: unitName
       value: Spitter 1
@@ -13402,6 +13414,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1783338346273543320, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783338346273543320, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 137142559}
@@ -13449,6 +13465,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ellen
       objectReference: {fileID: 0}
+    - target: {fileID: 3235965575146425518, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 803e48520755c4b4fb1ede5f6200457d, type: 2}
+    - target: {fileID: 3235965575146425518, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 803e48520755c4b4fb1ede5f6200457d, type: 2}
+    - target: {fileID: 3235965575146425518, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 803e48520755c4b4fb1ede5f6200457d, type: 2}
+    - target: {fileID: 3235965575146425518, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 803e48520755c4b4fb1ede5f6200457d, type: 2}
+    - target: {fileID: 3235965575146425518, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 803e48520755c4b4fb1ede5f6200457d, type: 2}
+    - target: {fileID: 3235965575146425518, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: 'm_Materials.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 803e48520755c4b4fb1ede5f6200457d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16009,6 +16049,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 528104615077059668, guid: e3b746fef223ad24f83c99406d6087ca, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a1ad6d855b749a44281a990ed0d02070, type: 2}
     - target: {fileID: 4315612692852672520, guid: e3b746fef223ad24f83c99406d6087ca, type: 3}
       propertyPath: unitName
       value: Spitter 4
@@ -16433,6 +16477,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 528104615077059668, guid: e3b746fef223ad24f83c99406d6087ca, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a1ad6d855b749a44281a990ed0d02070, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16462,9 +16510,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUnit
   unitName: 
   faction: 0
+  maxHP: 20
+  currentHP: 0
   initiative: 0
   maxAP: 10
   currentAP: 0
+  movementCostPerUnit: 1
+  agent: {fileID: 0}
+  combatRole: 1
+  minAttackRange: 0
+  maxAttackRange: 10
+  baseHitChance: 0.75
+  maxRangePenalty: 0.4
+  lineOfSightMask:
+    serializedVersion: 2
+    m_Bits: 0
+  attackRange: 2
+  attackAPCost: 4
 --- !u!1 &1479676533
 GameObject:
   m_ObjectHideFlags: 0
@@ -17733,9 +17795,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUnit
   unitName: 
   faction: 0
+  maxHP: 20
+  currentHP: 0
   initiative: 0
   maxAP: 10
   currentAP: 0
+  movementCostPerUnit: 1
+  agent: {fileID: 0}
+  combatRole: 1
+  minAttackRange: 0
+  maxAttackRange: 10
+  baseHitChance: 0.75
+  maxRangePenalty: 0.4
+  lineOfSightMask:
+    serializedVersion: 2
+    m_Bits: 0
+  attackRange: 2
+  attackAPCost: 4
 --- !u!43 &1720351373
 Mesh:
   m_ObjectHideFlags: 0
@@ -20509,6 +20585,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 528104615077059668, guid: e3b746fef223ad24f83c99406d6087ca, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a1ad6d855b749a44281a990ed0d02070, type: 2}
     - target: {fileID: 4315612692852672520, guid: e3b746fef223ad24f83c99406d6087ca, type: 3}
       propertyPath: unitName
       value: Spitter 2
@@ -20540,9 +20620,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUnit
   unitName: 
   faction: 0
+  maxHP: 20
+  currentHP: 0
   initiative: 0
   maxAP: 10
   currentAP: 0
+  movementCostPerUnit: 1
+  agent: {fileID: 0}
+  combatRole: 1
+  minAttackRange: 0
+  maxAttackRange: 10
+  baseHitChance: 0.75
+  maxRangePenalty: 0.4
+  lineOfSightMask:
+    serializedVersion: 2
+    m_Bits: 32
+  attackRange: 2
+  attackAPCost: 4
 --- !u!1 &1870261585
 GameObject:
   m_ObjectHideFlags: 0
