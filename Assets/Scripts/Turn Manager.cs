@@ -7,6 +7,13 @@ public class TurnManager : MonoBehaviour
 {
     public static TurnManager Instance { get; private set; }
 
+    public TurnMode currentMode = TurnMode.None;
+
+    public void SetMode(TurnMode mode)
+    {
+        currentMode = mode;
+    }
+
     private List<Unit> allUnits = new();      // All registered units
     private List<Unit> turnOrder = new();     // Units in turn order
     private int currentIndex = 0;
@@ -111,7 +118,12 @@ public class TurnManager : MonoBehaviour
             Debug.Log("=== NEW ROUND ===");
         }
 
+        currentMode = TurnMode.None;
+
         Unit unit = turnOrder[currentIndex];
+
+
+
 
         if (unit == null || !unit.IsAlive)
         {
@@ -132,6 +144,12 @@ public class TurnManager : MonoBehaviour
     public void EndCurrentTurn()
     {
         currentIndex++;
+        
+        currentMode = TurnMode.None;
+
+        if (currentIndex >= turnOrder.Count)
+            currentIndex = 0;
+
         StartTurn();
     }
 
@@ -149,6 +167,9 @@ public class TurnManager : MonoBehaviour
         SelectedUnit.SetSelected(true);
 
         Debug.Log($"SELECTED → {unit.unitName}");
+
+        
+        CombatUIController.Instance.SetSelectedUnit(unit);
     }
 
     #endregion

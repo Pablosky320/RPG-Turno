@@ -34,6 +34,19 @@ public abstract class Unit : MonoBehaviour
 
     public LayerMask lineOfSightMask;
 
+    public HealthBar healthBarPrefab;
+    HealthBar healthBarInstance;
+
+    protected virtual void Start()
+    {
+        healthBarInstance = Instantiate(
+            healthBarPrefab,
+            transform.position + Vector3.up * 2f,
+            Quaternion.identity,
+            transform
+        );
+        healthBarInstance.Init(this);
+    }
 
 
     protected virtual void Awake()
@@ -191,6 +204,24 @@ public abstract class Unit : MonoBehaviour
         }
 
         return highestCover;
+    }
+
+    public float PreviewHitChance(Unit target)
+    {
+        float distance = Vector3.Distance(transform.position, target.transform.position);
+
+        if (distance < minAttackRange || distance > maxAttackRange)
+            return 0f;
+
+        if (!HasLineOfSight(target))
+            return 0f;
+
+        float rangeFactor = distance / maxAttackRange;
+        float distancePenalty = Mathf.Lerp(0f, maxRangePenalty, rangeFactor);
+        float coverPenalty = GetCoverModifier(target);
+
+        float hitChance = baseHitChance - distancePenalty - coverPenalty;
+        return Mathf.Clamp01(hitChance);
     }
 
     public void TakeDamage(int amount)

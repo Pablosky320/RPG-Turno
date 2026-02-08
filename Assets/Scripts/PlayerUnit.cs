@@ -18,10 +18,13 @@ public class PlayerUnit : Unit
         if (TurnManager.Instance.SelectedUnit != this)
             return;
 
-        HandleInput();
+      HandleHover();
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            EndTurn();
+        if (TurnManager.Instance.currentMode == TurnMode.None)
+            return;
+
+        if (Input.GetMouseButtonDown(0))
+            HandleClick();
     }
 
     void HandleInput()
@@ -43,6 +46,41 @@ public class PlayerUnit : Unit
 
         // Move to ground
         MoveTo(hit.point);
+    }
+
+    void HandleHover()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        if (!Physics.Raycast(ray, out RaycastHit hit))
+        {
+            CombatUIController.Instance.SetHoveredTarget(null);
+            return;
+        }
+
+        Unit target = hit.collider.GetComponent<Unit>();
+        CombatUIController.Instance.SetHoveredTarget(
+            target != null && target.faction == Faction.Enemy ? target : null
+        );
+    }
+
+    void HandleClick()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        if (!Physics.Raycast(ray, out RaycastHit hit))
+            return;
+
+        if (TurnManager.Instance.currentMode == TurnMode.Move)
+        {
+            MoveTo(hit.point);
+        }
+        else if (TurnManager.Instance.currentMode == TurnMode.Attack)
+        {
+            Unit target = hit.collider.GetComponent<Unit>();
+            if (target != null && target.faction == Faction.Enemy)
+            {
+                TryAttack(target);
+            }
+        }
     }
 
     void OnMouseDown()
