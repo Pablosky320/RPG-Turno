@@ -4,21 +4,12 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider slider;
-    Unit unit;
-
-    public void Init(Unit u)
-    {
-        unit = u;
-        slider.maxValue = u.maxHP;
-        slider.value = u.currentHP;
-    }
+    public Unit unit;
 
     void Update()
     {
-        if (unit == null)
-            return;
-
+        if (unit == null) return;
         slider.value = unit.currentHP;
-        transform.rotation = Camera.main.transform.rotation;
+        transform.forward = Camera.main.transform.forward;
     }
 }

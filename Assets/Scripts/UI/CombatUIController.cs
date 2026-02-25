@@ -5,12 +5,12 @@ public class CombatUIController : MonoBehaviour
 {
     public static CombatUIController Instance;
 
-    [Header("Buttons")]
     public Button moveButton;
     public Button attackButton;
     public Button endTurnButton;
 
-    [Header("Info")]
+    public Slider apBar;
+    public TextMeshProUGUI apText;
     public TextMeshProUGUI accuracyText;
 
     Unit selectedUnit;
@@ -21,16 +21,20 @@ public class CombatUIController : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
-    {
-        moveButton.onClick.AddListener(OnMoveClicked);
-        attackButton.onClick.AddListener(OnAttackClicked);
-        endTurnButton.onClick.AddListener(OnEndTurnClicked);
-    }
-
     void Update()
     {
-        UpdateAccuracyPreview();
+        if (selectedUnit == null)
+            return;
+
+        apBar.maxValue = selectedUnit.maxAP;
+        apBar.value = selectedUnit.currentAP;
+        apText.text = $"AP {selectedUnit.currentAP}/{selectedUnit.maxAP}";
+
+        if (hoveredTarget != null)
+            accuracyText.text =
+                $"Hit: {(selectedUnit.PreviewHitChance(hoveredTarget) * 100):0}%";
+        else
+            accuracyText.text = "";
     }
 
     public void SetSelectedUnit(Unit unit)
@@ -43,30 +47,7 @@ public class CombatUIController : MonoBehaviour
         hoveredTarget = unit;
     }
 
-    void UpdateAccuracyPreview()
-    {
-        if (selectedUnit == null || hoveredTarget == null)
-        {
-            accuracyText.text = "";
-            return;
-        }
-
-        float chance = selectedUnit.PreviewHitChance(hoveredTarget);
-        accuracyText.text = $"Hit Chance: {(chance * 100f):0}%";
-    }
-
-    void OnMoveClicked()
-    {
-        TurnManager.Instance.SetMode(TurnMode.Move);
-    }
-
-    void OnAttackClicked()
-    {
-        TurnManager.Instance.SetMode(TurnMode.Attack);
-    }
-
-    void OnEndTurnClicked()
-    {
-        TurnManager.Instance.EndCurrentTurn();
-    }
+    public void MoveMode() => TurnManager.Instance.SetMode(TurnMode.Move);
+    public void AttackMode() => TurnManager.Instance.SetMode(TurnMode.Attack);
+    public void EndTurn() => TurnManager.Instance.EndCurrentTurn();
 }
